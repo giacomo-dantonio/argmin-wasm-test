@@ -11,7 +11,7 @@ pub fn solve() {
     let cost = test_function::TestFunction { a: 1.0, b: 1.0, c: 1.0 };
     
     // Define initial parameter vector
-    let init_param: Vec<f64> = vec![-1.2, 1.0];
+    let init_param: Vec<f64> = vec![-1.2, 1.0, 1.0];
     
     // Set up line search
     let linesearch = MoreThuenteLineSearch::new();
@@ -25,7 +25,18 @@ pub fn solve() {
         // .add_observer(ArgminSlogLogger::term(), ObserverMode::Always)
         // Set maximum iterations to 10
         .max_iters(10)
+        .target_cost(0.0)
         // run the solver on the defined problem
         .run()
         .unwrap();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn solve_test() {
+        solve();
+    }
 }

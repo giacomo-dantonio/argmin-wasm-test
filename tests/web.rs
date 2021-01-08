@@ -13,6 +13,6 @@ fn pass() {
 }
 
 #[wasm_bindgen_test]
-fn solve_test() {
+fn solve_test_wasm() {
     argmin_wasm_test::solve();
 }
